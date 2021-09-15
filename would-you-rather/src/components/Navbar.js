@@ -5,6 +5,8 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import HomeIcon from '@material-ui/icons/Home';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import LogDetails from "./LogDetails";
+
 
 const useStyles = makeStyles({
     root: {
@@ -29,7 +31,10 @@ export default function SimpleBottomNavigation() {
                 <BottomNavigationAction label="Home" icon={<HomeIcon />} />
                 <BottomNavigationAction label="New Question" icon={<PostAddIcon />} />
                 <BottomNavigationAction label="Leaderboard" icon={<AssignmentIcon />} />
+                <LogDetails />
+
             </BottomNavigation>
+
         </div>
     )
 }
