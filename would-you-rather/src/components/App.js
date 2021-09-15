@@ -1,11 +1,14 @@
 import Navbar from "./Navbar";
 import Login from './Login'
+import Questions from "./Questions";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <Login />
+      {/* <Login /> */}
+
+      <Questions />
     </div>
   );
 }
