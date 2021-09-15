@@ -1,6 +1,7 @@
 import Navbar from "./Navbar";
 import Login from './Login'
 import Questions from "./Questions";
+import QuestionPage from "./QuestionPage";
 
 function App() {
   return (
@@ -8,7 +9,8 @@ function App() {
       <Navbar />
       {/* <Login /> */}
 
-      <Questions />
+      {/* <Questions /> */}
+      <QuestionPage />
     </div>
   );
 }
