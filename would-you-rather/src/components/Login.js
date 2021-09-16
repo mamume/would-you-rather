@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import reactReduxLogo from '../assets/react-redux.png'
 import SelectUser from './SelectUser';
+import { connect } from 'react-redux';
+import { setAuthedUser } from '../actions/authedUser'
 
 
 const useStyles = makeStyles({
@@ -36,8 +38,15 @@ const useStyles = makeStyles({
     },
 });
 
-export default function Login() {
+function Login(props) {
     const classes = useStyles();
+    const [selectedUser, setSelectedUser] = useState(null);
+
+    // console.log(selectedUser)
+
+    const sign = () => {
+        props.dispatch(setAuthedUser(selectedUser))
+    }
 
     return (
         <Card className={classes.root}>
@@ -54,15 +63,18 @@ export default function Login() {
                         Sign in
                     </Typography>
                 </center>
-                <SelectUser />
+                <SelectUser setSelectedUser={setSelectedUser} />
             </CardContent>
 
 
             <CardActions>
-                <Button style={{ width: '100%' }} variant="contained" color="primary">
+                <Button onClick={sign} style={{ width: '100%' }} variant="contained" color="primary">
                     Login
                 </Button>
             </CardActions>
         </Card >
     );
 }
+
+
+export default connect()(Login)

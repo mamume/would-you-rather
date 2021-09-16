@@ -5,7 +5,9 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import HomeIcon from '@material-ui/icons/Home';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import AssignmentIcon from '@material-ui/icons/Assignment';
-import LogDetails from "./LogDetails";
+import LoginDetails from "./LoginDetails";
+import { connect } from 'react-redux';
+import { logoutUser } from '../actions/authedUser';
 
 
 const useStyles = makeStyles({
@@ -16,9 +18,15 @@ const useStyles = makeStyles({
     },
 });
 
-export default function SimpleBottomNavigation() {
+function Navbar(props) {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
+
+    const { authedUser } = props
+
+    const logout = () => {
+        props.dispatch(logoutUser())
+    }
 
     return (
         <div>
@@ -33,7 +41,8 @@ export default function SimpleBottomNavigation() {
                 <BottomNavigationAction label="Home" icon={<HomeIcon />} />
                 <BottomNavigationAction label="New Question" icon={<PostAddIcon />} />
                 <BottomNavigationAction label="Leaderboard" icon={<AssignmentIcon />} />
-                <LogDetails />
+
+                {authedUser && <LoginDetails authedUser={authedUser} logout={logout} />}
 
             </BottomNavigation>
 
@@ -41,3 +50,7 @@ export default function SimpleBottomNavigation() {
     )
 }
 
+
+export default connect(({ authedUser }) => ({
+    authedUser
+}))(Navbar)

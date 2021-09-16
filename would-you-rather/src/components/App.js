@@ -17,7 +17,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* {console.log(props)} */}
+        <Navbar />
+        <Login />
       </div>
     );
   }

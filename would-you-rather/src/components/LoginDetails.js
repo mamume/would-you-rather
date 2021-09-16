@@ -14,14 +14,17 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function LogDetails() {
+export default function LoginDetails(props) {
     const classes = useStyles();
+
+    const { authedUser } = props
+    console.log(authedUser)
 
     return (
         <div className={classes.root}>
-            <div>Hello, username</div>
-            <Avatar alt="John Doe" src="profile_pics/johndoe.png" />
-            <Button variant="outlined" color="secondary">
+            <div>Hello, {authedUser.name}</div>
+            <Avatar alt={authedUser.name} src={authedUser.avatarURL} />
+            <Button onClick={props.logout} variant="outlined" color="secondary">
                 Logout
             </Button>
         </div>
