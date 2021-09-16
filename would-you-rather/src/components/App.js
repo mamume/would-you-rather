@@ -7,21 +7,30 @@ import CreateQuestion from './CreateQuestion'
 import { connect } from "react-redux";
 import { Component } from "react";
 import handleInitialData from '../actions/shared'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+
 
 class App extends Component {
   componentDidMount() {
-    const { dispatch } = this.props
-    dispatch(handleInitialData())
+    this.props.dispatch(handleInitialData())
   }
 
   render() {
     return (
-      <div className="App">
-        <Navbar />
-        <Login />
-      </div>
+      <Router>
+        <div className="App">
+          <Navbar />
+          {this.props.authedUser === null
+            ? <Route path='/' exact component={Login} />
+            : <div>
+              <Route path='/' exact component={Questions} />
+            </div>}
+        </div>
+      </Router>
     );
   }
 }
 
-export default connect()(App);
+export default connect(({ authedUser }) => ({
+  authedUser
+}))(App);
