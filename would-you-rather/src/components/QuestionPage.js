@@ -6,8 +6,8 @@ export default class QuestionPage extends Component {
     render() {
         return (
             <div>
-                {/* <AnsweredQuestion /> */}
-                <UnansweredQuestion />
+                <AnsweredQuestion />
+                {/* <UnansweredQuestion /> */}
             </div>
         )
     }

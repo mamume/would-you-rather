@@ -2,6 +2,8 @@ import Navbar from "./Navbar";
 import Login from './Login'
 import Questions from "./Questions";
 import QuestionPage from "./QuestionPage";
+import Leaderboard from './Leaderboard'
+import CreateQuestion from './CreateQuestion'
 
 function App() {
   return (
@@ -10,7 +12,9 @@ function App() {
       {/* <Login /> */}
 
       {/* <Questions /> */}
-      <QuestionPage />
+      {/* <QuestionPage /> */}
+      {/* <Leaderboard /> */}
+      <CreateQuestion />
     </div>
   );
 }
