@@ -28,22 +28,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function AutoGridNoWrap() {
+export default function QuestionCard(props) {
     const classes = useStyles();
+    const { question, user } = props
 
     return (
         <div className={classes.root}>
             <Paper className={classes.paper}>
                 <Grid container wrap="nowrap" spacing={2}>
                     <Grid item className={classes.vline}>
-                        <Avatar className={classes.avatar} src="profile_pics/sarahedo.png">W</Avatar>
-                        <div style={{ textAlign: 'center' }}>username</div>
+                        <Avatar className={classes.avatar} src={user.avatarURL}>W</Avatar>
+                        <div style={{ textAlign: 'center' }}>{user.name}</div>
                     </Grid>
                     <Grid item xs zeroMinWidth>
                         <Typography noWrap>
                             Would you rather
                             <br />
-                            Question
+                            {`...${question.optionOne.text.slice(0, 15)}...`}
                         </Typography>
                         <Button fullWidth='true' variant="outlined" color="primary">
                             View Poll

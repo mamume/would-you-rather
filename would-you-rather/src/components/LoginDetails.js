@@ -18,7 +18,6 @@ export default function LoginDetails(props) {
     const classes = useStyles();
 
     const { authedUser } = props
-    console.log(authedUser)
 
     return (
         <div className={classes.root}>

@@ -20,11 +20,11 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navbar />
-          {this.props.authedUser === null
-            ? <Route path='/' exact component={Login} />
-            : <div>
-              <Route path='/' exact component={Questions} />
-            </div>}
+          {<div>
+            <Route path='/' exact component={this.props.authedUser ? Questions : Login} />
+            <Route path='/add' component={this.props.authedUser ? CreateQuestion : Login} />
+            <Route path='/leaderboard' component={this.props.authedUser ? Leaderboard : Login} />
+          </div>}
         </div>
       </Router>
     );
