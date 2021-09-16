@@ -4,19 +4,23 @@ import Questions from "./Questions";
 import QuestionPage from "./QuestionPage";
 import Leaderboard from './Leaderboard'
 import CreateQuestion from './CreateQuestion'
+import { connect } from "react-redux";
+import { Component } from "react";
+import handleInitialData from '../actions/shared'
 
-function App() {
-  return (
-    <div className="App">
-      <Navbar />
-      {/* <Login /> */}
+class App extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props
+    dispatch(handleInitialData())
+  }
 
-      {/* <Questions /> */}
-      {/* <QuestionPage /> */}
-      {/* <Leaderboard /> */}
-      <CreateQuestion />
-    </div>
-  );
+  render() {
+    return (
+      <div className="App">
+        {/* {console.log(props)} */}
+      </div>
+    );
+  }
 }
 
-export default App;
+export default connect()(App);

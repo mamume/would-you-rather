@@ -1,5 +1,3 @@
-
-
 let users = {
   sarahedo: {
     id: 'sarahedo',
