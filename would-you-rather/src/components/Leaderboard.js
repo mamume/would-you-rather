@@ -28,7 +28,7 @@ function Leaderboard(props) {
     return (
         <div>
             {Object.keys(usersScore).map((key) => (
-                <UserScoreCard userScore={usersScore[key]} />
+                <UserScoreCard userScore={usersScore[key]} key={key} />
             ))}
         </div>
     )

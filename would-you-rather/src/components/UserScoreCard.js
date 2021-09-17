@@ -56,7 +56,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function UserScoreCard(props) {
     const classes = useStyles();
-    console.log(props)
     const { name, avatar, answered, created, score } = props.userScore
 
     return (

@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 function QuestionList(props) {
     const { questions, users } = props
 
-    // console.log(users)
+    questions.sort((a, b) => b.timestamp - a.timestamp)
     // console.log(questions)
 
     const getUser = (id) => {
@@ -15,7 +15,7 @@ function QuestionList(props) {
     return (
         <div>
             {questions.map((question) => (
-                <QuestionCard question={question} user={getUser(question.author)} />
+                <QuestionCard key={question.id} question={question} user={getUser(question.author)} />
             ))}
         </div>
     )

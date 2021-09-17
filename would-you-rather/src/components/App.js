@@ -12,7 +12,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(handleInitialData())
+    if (this.props.authedUser === null)
+      this.props.dispatch(handleInitialData())
   }
 
   render() {

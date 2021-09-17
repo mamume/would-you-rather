@@ -5,7 +5,6 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import reactReduxLogo from '../assets/react-redux.png'
 import SelectUser from './SelectUser';
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser'
@@ -58,7 +57,7 @@ function Login(props) {
                 <Typography className={classes.pos} color="textSecondary">
                     Please sign in to continue
                 </Typography>
-                <center><img alt='logo' src={reactReduxLogo} />
+                <center><img alt='logo' src='/assets/react-redux.png' />
                     <Typography>
                         Sign in
                     </Typography>
