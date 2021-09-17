@@ -38,7 +38,7 @@ export default function QuestionCard(props) {
             <Paper className={classes.paper}>
                 <Grid container wrap="nowrap" spacing={2}>
                     <Grid item className={classes.vline}>
-                        <Avatar className={classes.avatar} src={user.avatarURL}>W</Avatar>
+                        <Avatar className={classes.avatar} src={user.avatarURL}></Avatar>
                         <div style={{ textAlign: 'center' }}>{user.name}</div>
                     </Grid>
                     <Grid item xs zeroMinWidth>
