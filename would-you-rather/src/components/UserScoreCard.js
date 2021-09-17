@@ -38,18 +38,18 @@ const useStyles = makeStyles((theme) => ({
     },
     header: {
         backgroundColor: '#eae8e8',
-        height: '40%',
-        lineHeight: '2'
+        lineHeight: '3',
+        borderBottom: '1px solid lightgrey'
     },
     scoreNum: {
         backgroundColor: '#3F51B5',
         color: 'white',
         width: 50,
-        height: 50,
-        borderRadius: '50%',
+        // height: 50,
+        borderRadius: '70%',
         margin: '5px auto',
-        padding: 12,
         boxSizing: 'border-box',
+        lineHeight: '3'
     }
 }));
 
@@ -66,15 +66,15 @@ export default function UserScoreCard(props) {
                         <Avatar className={classes.avatar} src={avatar}></Avatar>
                     </Grid>
                     <Grid className={classes.vline} item xs zeroMinWidth>
-                        <Typography variant='h6'>
+                        <Typography component={'div'} variant='h6'>
                             {name}
                         </Typography>
 
-                        <Typography>
+                        <Typography component={'div'}>
                             <Box>Answered Questions: {answered}</Box>
                         </Typography>
 
-                        <Typography>
+                        <Typography component={'div'}>
                             <Box>Created Questions: {created}</Box>
                         </Typography>
                     </Grid>

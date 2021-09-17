@@ -15,7 +15,7 @@ function LinearProgressWithLabel(props) {
                 <LinearProgress variant="determinate" {...props} />
             </Box>
             <Box minWidth={35}>
-                <Typography variant="body2" color="textSecondary">{`${Math.round(
+                <Typography component={'div'} variant="body2" color="textSecondary">{`${Math.round(
                     props.value,
                 )}%`}</Typography>
             </Box>
@@ -94,22 +94,22 @@ export default function AnsweredQuestion(props) {
                         <div style={{ textAlign: 'center' }}>Asked by <b>{author.name}</b></div>
                     </Grid>
                     <Grid item xs zeroMinWidth>
-                        <Typography variant='h6'>
+                        <Typography component={'div'} variant='h6'>
                             Results:
                         </Typography>
 
                         <div className={option1class}>
-                            <Typography>Would your rather {question.optionOne.text}</Typography>
+                            <Typography component={'div'}>Would your rather {question.optionOne.text}</Typography>
                             <LinearProgressWithLabel value={progress1} />
-                            <Typography align='center'>{option1votes} out of {totalVotes} votes</Typography>
+                            <Typography component={'div'} align='center'>{option1votes} out of {totalVotes} votes</Typography>
                         </div>
 
                         <br />
 
                         <div className={option2class}>
-                            <Typography>Would your rather {question.optionTwo.text}</Typography>
+                            <Typography component={'div'}>Would your rather {question.optionTwo.text}</Typography>
                             <LinearProgressWithLabel value={progress2} />
-                            <Typography align='center'>{option2votes} out of {totalVotes} votes</Typography>
+                            <Typography component={'div'} align='center'>{option2votes} out of {totalVotes} votes</Typography>
                         </div>
                     </Grid>
                 </Grid>

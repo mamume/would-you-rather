@@ -6,6 +6,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom';
+import { Box } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -25,6 +26,8 @@ const useStyles = makeStyles((theme) => ({
     },
     vline: {
         borderRight: "1px solid lightgrey",
+        width: '140px',
+        marginRight: '10px'
     },
 }));
 
@@ -36,22 +39,24 @@ export default function QuestionCard(props) {
     return (
         <div className={classes.root}>
             <Paper className={classes.paper}>
-                <Grid container wrap="nowrap" spacing={2}>
-                    <Grid item className={classes.vline}>
+                <Grid container wrap="nowrap" spacing={3}>
+                    <Grid align='center' item className={classes.vline}>
                         <Avatar className={classes.avatar} src={user.avatarURL}></Avatar>
-                        <div style={{ textAlign: 'center' }}>{user.name}</div>
+                        <Typography component={'div'}><b>{user.name}</b></Typography>
                     </Grid>
                     <Grid item xs zeroMinWidth>
-                        <Typography noWrap>
-                            Would you rather
-                            <br />
-                            {`...${question.optionOne.text.slice(0, 15)}...`}
-                        </Typography>
-                        <Link to={`/question/${question.id}`}>
-                            <Button fullWidth='true' variant="outlined" color="primary">
-                                View Poll
-                            </Button>
-                        </Link>
+                        <Box>
+                            <Typography component={'div'} noWrap>
+                                <b>Would you rather</b>
+                                <br />
+                                {`...${question.optionOne.text.slice(0, 15)}...`}
+                            </Typography>
+                            <Link to={`/question/${question.id}`}>
+                                <Button fullWidth={true} variant="outlined" color="primary">
+                                    View Poll
+                                </Button>
+                            </Link>
+                        </Box>
                     </Grid>
                 </Grid>
             </Paper>

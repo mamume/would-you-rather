@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { connect } from 'react-redux';
 import QuestionList from './QuestionList'
+import LoadingBar from 'react-redux-loading'
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -22,7 +23,7 @@ function TabPanel(props) {
         >
             {value === index && (
                 <Box p={3}>
-                    <Typography>{children}</Typography>
+                    <Typography component={'div'}>{children}</Typography>
                 </Box>
             )}
         </div>
@@ -72,7 +73,6 @@ function Questions(props) {
         setValue(newValue);
     };
 
-    // setAnsweredQues(prev => console.log('prev', prev))
 
     useEffect(() => {
         const { answers, questions } = props
@@ -93,24 +93,29 @@ function Questions(props) {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static">
-                <Tabs
-                    variant="fullWidth"
-                    value={value}
-                    onChange={handleChange}
-                    aria-label="nav tabs example"
-                >
-                    <LinkTab label="Unanswered Questions" {...a11yProps(0)} />
-                    <LinkTab label="Answered Questions" {...a11yProps(1)} />
-                </Tabs>
-            </AppBar>
+            <LoadingBar />
+            {props.loading === true
+                ? null
+                : (<div>
+                    <AppBar position="static">
+                        <Tabs
+                            variant="fullWidth"
+                            value={value}
+                            onChange={handleChange}
+                            aria-label="nav tabs example"
+                        >
+                            <LinkTab label="Unanswered Questions" {...a11yProps(0)} />
+                            <LinkTab label="Answered Questions" {...a11yProps(1)} />
+                        </Tabs>
+                    </AppBar>
 
-            <TabPanel value={value} index={0}>
-                <QuestionList questions={unansweredQues} />
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-                <QuestionList questions={answeredQues} />
-            </TabPanel>
+                    <TabPanel value={value} index={0}>
+                        <QuestionList questions={unansweredQues} />
+                    </TabPanel>
+                    <TabPanel value={value} index={1}>
+                        <QuestionList questions={answeredQues} />
+                    </TabPanel>
+                </div>)}
         </div>
     );
 
@@ -118,5 +123,6 @@ function Questions(props) {
 
 export default connect(({ authedUser, questions }) => ({
     answers: authedUser.answers,
-    questions
+    questions,
+    loading: Boolean(!Object.keys(questions).length)
 }))(Questions)

@@ -33,7 +33,7 @@ const mapStateToProps = ({ authedUser, questions, users }, props) => {
         const answers = Object.keys(authedUser.answers)
         const question = questions[id]
         const author = users[question.author]
-        console.log(question)
+
         return {
             answered: answers.includes(question.id),
             question,

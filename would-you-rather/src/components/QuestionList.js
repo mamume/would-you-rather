@@ -6,7 +6,6 @@ function QuestionList(props) {
     const { questions, users } = props
 
     questions.sort((a, b) => b.timestamp - a.timestamp)
-    // console.log(questions)
 
     const getUser = (id) => {
         return users[id]

@@ -27,6 +27,7 @@ function Navbar(props) {
 
     const logout = () => {
         props.dispatch(logoutUser())
+        props.history.push('/')
     }
 
     return (
@@ -34,7 +35,6 @@ function Navbar(props) {
             <BottomNavigation
                 value={value}
                 onChange={(event, newValue) => {
-                    // console.log(value)
                     setValue(newValue);
                     switch (newValue) {
                         case 1:

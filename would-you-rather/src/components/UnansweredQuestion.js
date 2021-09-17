@@ -46,7 +46,6 @@ function UnansweredQuestion(props) {
     const { author, question, dispatch, uid } = props
 
     const saveAnswer = () => {
-        // console.log(uid, question.id, value)
         dispatch(handleSaveAnswer(uid, question.id, value))
     }
 
@@ -54,12 +53,12 @@ function UnansweredQuestion(props) {
         <div className={classes.root}>
             <Paper className={classes.paper}>
                 <Grid container wrap="nowrap" spacing={2}>
-                    <Grid item className={classes.vline}>
+                    <Grid item className={classes.vline} align='center'>
                         <Avatar className={classes.avatar} src={author.avatarURL}></Avatar>
                         < div style={{ textAlign: 'center' }}>{author.name} asks:</div>
                     </Grid>
                     <Grid item xs zeroMinWidth>
-                        <Typography noWrap>
+                        <Typography component={'div'} noWrap>
                             Would You Rather...
                         </Typography>
 
@@ -68,7 +67,7 @@ function UnansweredQuestion(props) {
                             <FormControlLabel value="optionTwo" control={<Radio color='primary' />} label={question.optionTwo.text} />
                         </RadioGroup>
 
-                        <Button onClick={saveAnswer} fullWidth='true' variant='contained' color="primary">
+                        <Button onClick={saveAnswer} fullWidth={true} variant='contained' color="primary">
                             Submit
                         </Button>
                     </Grid>
