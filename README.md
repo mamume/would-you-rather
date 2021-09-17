@@ -17,11 +17,11 @@ To install dependancies and start the project:
 ├── package.json # npm package manager file.
 ├── public
 |   ├── App.css # Application Styles.
-│   ├── favicon.ico # React Icon.
+|   ├── favicon.ico # React Icon.
 |   ├── logo192.png # React Logo.
 |   ├── logo512.png # React Logo.
 |   ├── manifest.json
-│   ├── index.html # DO NOT MODIFY.
+|   ├── index.html # DO NOT MODIFY.
 |   ├── assets # Contains images used in application.
 |   |   ├── error-404.png # Error 404 image.
 |   |   └── react-redux.png # React-Redux logo.
@@ -32,9 +32,9 @@ To install dependancies and start the project:
 └── src
     ├── index.js # It is used for DOM rendering and creating redux store.
     ├── actions # Application action creators.
-    │   ├── authedUser.js # Authenticated User.
-    │   ├── questions.js # Receiving Questions Data.
-    │   ├── shared.js # For API requests and mixed actions.
+    |   ├── authedUser.js # Authenticated User.
+    |   ├── questions.js # Receiving Questions Data.
+    |   ├── shared.js # For API requests and mixed actions.
     |   └── users.js # Rececing Application Users.
     ├── components # Contain used components.
     │   ├── AnsweredQuestion.js # Answered Question Component.
@@ -70,7 +70,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Dependencies
 
-This project built usind this packges, and Matrial-UI for styles.
+This project built using this packges, and Matrial-UI for styles.
   - [Material-UI](https://mui.com/)
   - [react-redux](https://github.com/reduxjs/react-redux)
   - [react-redux-loading](https://github.com/tylermcginnis/react-redux-loading-bar)
