@@ -73,8 +73,8 @@ export default function AnsweredQuestion(props) {
     const option2votes = question.optionTwo.votes.length
     const totalVotes = option1votes + option2votes
 
-    const [progress1, setProgress1] = React.useState(option1votes * 100 / totalVotes);
-    const [progress2, setProgress2] = React.useState(option2votes * 100 / totalVotes);
+    const [progress1] = React.useState(option1votes * 100 / totalVotes);
+    const [progress2] = React.useState(option2votes * 100 / totalVotes);
 
     let option1class, option2class
     if (question.optionOne.votes.includes(uid)) {
