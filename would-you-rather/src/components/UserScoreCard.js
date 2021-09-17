@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -55,34 +55,36 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function UnansweredQuestion() {
+export default function UserScoreCard(props) {
     const classes = useStyles();
+    console.log(props)
+    const { name, avatar, answered, created, score } = props.userScore
 
     return (
         <div className={classes.root}>
             <Paper className={classes.paper}>
                 <Grid container wrap="nowrap" spacing={2}>
                     <Grid item className={classes.vline}>
-                        <Avatar className={classes.avatar} src="profile_pics/sarahedo.png">W</Avatar>
+                        <Avatar className={classes.avatar} src={avatar}></Avatar>
                     </Grid>
                     <Grid className={classes.vline} item xs zeroMinWidth>
                         <Typography variant='h6'>
-                            Username
+                            {name}
                         </Typography>
 
                         <Typography>
-                            <Box>Answered Questions</Box>
+                            <Box>Answered Questions: {answered}</Box>
                         </Typography>
 
                         <Typography>
-                            <Box>Created Questions</Box>
+                            <Box>Created Questions: {created}</Box>
                         </Typography>
                     </Grid>
 
                     <Grid>
                         <Box className={classes.score}>
                             <Box className={classes.header}>Score</Box>
-                            <Box className={classes.scoreNum}>10</Box>
+                            <Box className={classes.scoreNum}>{score}</Box>
                         </Box>
                     </Grid>
                 </Grid>
