@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -69,21 +69,31 @@ const useStyles = makeStyles((theme) => ({
 
 function Questions(props) {
     const classes = useStyles();
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = useState(0);
+    const [answeredQues, setAnsweredQues] = useState([])
+    const [unansweredQues, setUnansweredQues] = useState([])
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
 
-    const { answers, questions, dispatch } = props
-    let answeredQues = []
-    let unansweredQues = []
+    // setAnsweredQues(prev => console.log('prev', prev))
 
-    for (let key in questions)
-        if (answers[key])
-            answeredQues.push(questions[key])
-        else
-            unansweredQues.push(questions[key])
+    useEffect(() => {
+        const { answers, questions } = props
+        setAnsweredQues([])
+        setUnansweredQues([])
+
+        for (let key in questions)
+            if (answers[key])
+                setAnsweredQues((prev) => (
+                    [...prev, questions[key]]
+                ))
+            else
+                setUnansweredQues(prev => (
+                    [...prev, questions[key]]
+                ))
+    }, [props])
 
 
     return (
@@ -95,8 +105,8 @@ function Questions(props) {
                     onChange={handleChange}
                     aria-label="nav tabs example"
                 >
-                    <LinkTab label="Unanswered Questions" href="/drafts" {...a11yProps(0)} />
-                    <LinkTab label="Answered Questions" href="/trash" {...a11yProps(1)} />
+                    <LinkTab label="Unanswered Questions" {...a11yProps(0)} />
+                    <LinkTab label="Answered Questions" {...a11yProps(1)} />
                 </Tabs>
             </AppBar>
 

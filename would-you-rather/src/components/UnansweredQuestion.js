@@ -8,6 +8,8 @@ import Button from '@material-ui/core/Button'
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
+import { connect } from 'react-redux';
+import { handleSaveAnswer } from '../actions/shared';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,22 +34,29 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function UnansweredQuestion() {
+function UnansweredQuestion(props) {
     const classes = useStyles();
 
-    const [value, setValue] = React.useState('option1');
+    const [value, setValue] = React.useState('optionOne');
 
     const handleChange = (event) => {
         setValue(event.target.value);
     };
+
+    const { author, question, dispatch, uid } = props
+
+    const saveAnswer = () => {
+        // console.log(uid, question.id, value)
+        dispatch(handleSaveAnswer(uid, question.id, value))
+    }
 
     return (
         <div className={classes.root}>
             <Paper className={classes.paper}>
                 <Grid container wrap="nowrap" spacing={2}>
                     <Grid item className={classes.vline}>
-                        <Avatar className={classes.avatar} src="profile_pics/sarahedo.png">W</Avatar>
-                        <div style={{ textAlign: 'center' }}>username asks:</div>
+                        <Avatar className={classes.avatar} src={author.avatarURL}></Avatar>
+                        < div style={{ textAlign: 'center' }}>{author.name} asks:</div>
                     </Grid>
                     <Grid item xs zeroMinWidth>
                         <Typography noWrap>
@@ -55,11 +64,11 @@ export default function UnansweredQuestion() {
                         </Typography>
 
                         <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange} >
-                            <FormControlLabel value="option1" control={<Radio color='primary' />} label="Option 1" />
-                            <FormControlLabel value="option2" control={<Radio color='primary' />} label="Option 2" />
+                            <FormControlLabel value="optionOne" control={<Radio color='primary' />} label={question.optionOne.text} />
+                            <FormControlLabel value="optionTwo" control={<Radio color='primary' />} label={question.optionTwo.text} />
                         </RadioGroup>
 
-                        <Button fullWidth='true' variant='contained' color="primary">
+                        <Button onClick={saveAnswer} fullWidth='true' variant='contained' color="primary">
                             Submit
                         </Button>
                     </Grid>
@@ -68,3 +77,8 @@ export default function UnansweredQuestion() {
         </div >
     );
 }
+
+
+export default connect(({ authedUser }) => ({
+    uid: authedUser.id
+}))(UnansweredQuestion)

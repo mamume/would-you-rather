@@ -6,7 +6,7 @@ import Leaderboard from './Leaderboard'
 import CreateQuestion from './CreateQuestion'
 import { connect } from "react-redux";
 import { Component } from "react";
-import handleInitialData from '../actions/shared'
+import { handleInitialData } from '../actions/shared'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 
@@ -24,6 +24,7 @@ class App extends Component {
             <Route path='/' exact component={this.props.authedUser ? Questions : Login} />
             <Route path='/add' component={this.props.authedUser ? CreateQuestion : Login} />
             <Route path='/leaderboard' component={this.props.authedUser ? Leaderboard : Login} />
+            <Route path='/question/:id' component={this.props.authedUser ? QuestionPage : Login} />
           </div>}
         </div>
       </Router>

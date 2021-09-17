@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button'
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -46,9 +47,11 @@ export default function QuestionCard(props) {
                             <br />
                             {`...${question.optionOne.text.slice(0, 15)}...`}
                         </Typography>
-                        <Button fullWidth='true' variant="outlined" color="primary">
-                            View Poll
-                        </Button>
+                        <Link to={`/question/${question.id}`}>
+                            <Button fullWidth='true' variant="outlined" color="primary">
+                                View Poll
+                            </Button>
+                        </Link>
                     </Grid>
                 </Grid>
             </Paper>

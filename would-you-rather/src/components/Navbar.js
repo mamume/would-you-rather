@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     root: {
         width: '100%',
         borderBottom: '2px solid #303F9F',
-        marginBottom: 20
+        // marginBottom: 20
     },
 });
 

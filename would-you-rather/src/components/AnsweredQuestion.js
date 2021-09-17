@@ -64,36 +64,52 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function UnansweredQuestion() {
+export default function AnsweredQuestion(props) {
     const classes = useStyles();
 
-    const [progress, setProgress] = React.useState(10);
+
+    const { author, question, uid } = props
+    const option1votes = question.optionOne.votes.length
+    const option2votes = question.optionTwo.votes.length
+    const totalVotes = option1votes + option2votes
+
+    const [progress1, setProgress1] = React.useState(option1votes * 100 / totalVotes);
+    const [progress2, setProgress2] = React.useState(option2votes * 100 / totalVotes);
+
+    let option1class, option2class
+    if (question.optionOne.votes.includes(uid)) {
+        option1class = classes.selectedOption
+        option2class = classes.option
+    } else {
+        option2class = classes.selectedOption
+        option1class = classes.option
+    }
 
     return (
         <div className={classes.root}>
             <Paper className={classes.paper}>
                 <Grid container wrap="nowrap" spacing={2}>
-                    <Grid item className={classes.vline}>
-                        <Avatar className={classes.avatar} src="profile_pics/sarahedo.png">W</Avatar>
-                        <div style={{ textAlign: 'center' }}>Asked by username</div>
+                    <Grid item className={classes.vline} align='center'>
+                        <Avatar className={classes.avatar} src={author.avatarURL}></Avatar>
+                        <div style={{ textAlign: 'center' }}>Asked by <b>{author.name}</b></div>
                     </Grid>
                     <Grid item xs zeroMinWidth>
                         <Typography variant='h6'>
                             Results:
                         </Typography>
 
-                        <div className={classes.selectedOption}>
-                            <Typography>Would your rather be a front-end developer</Typography>
-                            <LinearProgressWithLabel value={progress} />
-                            <Typography align='center'>1 out of 2 votes</Typography>
+                        <div className={option1class}>
+                            <Typography>Would your rather {question.optionOne.text}</Typography>
+                            <LinearProgressWithLabel value={progress1} />
+                            <Typography align='center'>{option1votes} out of {totalVotes} votes</Typography>
                         </div>
 
                         <br />
 
-                        <div className={classes.option}>
-                            <Typography>Would your rather be a back-end developer</Typography>
-                            <LinearProgressWithLabel value={progress} />
-                            <Typography align='center'>1 out of 2 votes</Typography>
+                        <div className={option2class}>
+                            <Typography>Would your rather {question.optionTwo.text}</Typography>
+                            <LinearProgressWithLabel value={progress2} />
+                            <Typography align='center'>{option2votes} out of {totalVotes} votes</Typography>
                         </div>
                     </Grid>
                 </Grid>
