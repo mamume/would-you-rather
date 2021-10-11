@@ -1,4 +1,4 @@
-# Would Your Rather...?
+# Would You Rather...?
 
 ## Overview
 
