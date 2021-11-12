@@ -43,6 +43,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
-  'main': "public/index.html"
+  },
+  "main": "public/index.html"
 }
